@@ -122,6 +122,7 @@ galaxy_info:
   #- web
 dependencies:
   - { role: systemd }
+  - { role: lochness }
 
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.

@@ -3,7 +3,7 @@ subnet 0.0.0.0 netmask 0.0.0.0 {
     option domain-name "{{ lochness_domain }}";
     max-lease-time {{ dhcpd_lease_time }};
     default-lease-time {{ dhcpd_lease_time }};
-    option domain-name-servers {{ lochness_nameservers|join(', ') }};
+    option domain-name-servers {{ lochness_nameservers }};
 
     include "/etc/dhcpd/hypervisors.conf";
     include "/etc/dhcpd/guests.conf";

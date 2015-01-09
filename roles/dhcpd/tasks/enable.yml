@@ -2,18 +2,18 @@
 
 - file: path=/etc/dhcpd state=directory owner=root mode=0755
 
-- template: src=dhcpd.conf.j2 dest=/etc/dhcpd/dhcpd.conf owner=root mode=0744
+- template: src=dhcpd.conf.j2 dest=/etc/dhcpd/dhcpd.conf owner=root mode=0644
   notify: dhcpd-restart
 
 - file: path=/etc/dhcpd/hypervisors.conf state=touch
 
 - file: path=/etc/dhcpd/guests.conf state=touch
 
-- template: src=dhcpd.service.j2 dest=/etc/systemd/system/dhcpd.service owner=root mode=0744
+- template: src=dhcpd.service.j2 dest=/etc/systemd/system/dhcpd.service owner=root mode=0644
   notify: systemd-reload
   notify: dhcpd-restart
 
-- template: src=dhcpd-announce.service.j2 dest=/etc/systemd/system/dhcpd-announce.service owner=root mode=0744
+- template: src=dhcpd-announce.service.j2 dest=/etc/systemd/system/dhcpd-announce.service owner=root mode=0644
   notify: systemd-reload
   notify: dhcpd-announce-restart
 
