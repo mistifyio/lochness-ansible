@@ -10,3 +10,13 @@
 
 - file: path=/etc/systemd/system/dhcpd.service state=absent
   notify: systemd-reload
+
+- stat: path=/etc/systemd/system/dhcpd-announce.service
+  register: dhcpd_announce_service_stat
+
+- service: name=dhcpd-announce state=stopped enabled=no
+  when: dhcpd_announce_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/dhcpd-announce.service state=absent
+  notify: systemd-reload
+ 
