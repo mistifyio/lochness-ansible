@@ -1,0 +1,14 @@
+---
+
+- template: src=tftpd.socket.j2 dest=/etc/systemd/system/tftpd.socket owner=root mode=0744
+  notify: systemd-reload
+  notify: tftpd.socket-restart
+
+- template: src=tftpd.service.j2 dest=/etc/systemd/system/tftpd.service owner=root mode=0744
+  notify: systemd-reload
+  notify: tftpd.service-restart
+
+- service: name=tftpd.socket state=started enabled=yes
+
+- service: name=tftpd.service state=started enabled=yes
+

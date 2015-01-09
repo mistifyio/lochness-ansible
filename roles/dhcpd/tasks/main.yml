@@ -1,0 +1,13 @@
+---
+
+# we need to discover the nodes running DNS so that we can
+# populate the dhcpd config. Currently, just using an ansible variable
+# but we may want a simple module for such discoveries
+
+- file: path=/etc/dhcpd state=directory owner=root mode=0755
+
+- include: enable.yml
+  when: dhcpd_enable == True or dhcpd_enable == "true" or dhcpd_enable == "True"
+
+- include: disable.yml
+  when: not dhcpd_enable or dhcpd_enable == "false" or dhcpd_enable == "False"

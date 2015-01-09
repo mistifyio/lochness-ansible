@@ -1,0 +1,4 @@
+---
+
+- name: etcd-restart
+  action: name=etcd state=restarted

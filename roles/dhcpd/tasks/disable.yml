@@ -1,0 +1,12 @@
+---
+
+# this is a hack as the service calls errors
+
+- stat: path=/etc/systemd/system/dhcpd.service
+  register: dhcpd_service_stat
+
+- service: name=dhcpd state=stopped enabled=no
+  when: dhcpd_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/dhcpd.service state=absent
+  notify: systemd-reload
