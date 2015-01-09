@@ -1,0 +1,10 @@
+---
+
+- name: queensland-restart
+  action: service name=queensland state=restarted
+
+- name: unbound-restart
+  action: service name=unbound state=restarted
+
+- name: dns-announce-restart
+  action: service name=dns-announce state=restarted

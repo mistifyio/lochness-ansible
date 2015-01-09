@@ -1,0 +1,14 @@
+[Unit]
+Description=Unbound DNS Server
+Wants=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/unbound -d -c /etc/unbound/unbound.conf
+StandardOutput=inherit
+StandardError=journal
+RestartSec=5s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

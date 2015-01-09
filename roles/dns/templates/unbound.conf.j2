@@ -1,0 +1,17 @@
+server:
+    interface: 0.0.0.0
+    val-permissive-mode: yes
+
+forward-zone:
+    name: "."
+    {% for item in lochness_nameservers.split(",") %}
+    forward-addr: {{ item|trim }}
+    {% endfor %}
+
+forward-zone:
+    name: "services.{{ lochness_domain }}."
+    forward-addr: 127.0.0.1@15353
+
+forward-zone:
+    name: "nodes.{{ lochness_domain }}."
+    forward-addr: 127.0.0.1@15353

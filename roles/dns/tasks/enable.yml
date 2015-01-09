@@ -1,0 +1,22 @@
+---
+
+- template: src=queensland.service.j2 dest=/etc/systemd/system/queensland.service owner=root mode=0644
+  notify: systemd-reload
+  notify: queensland-restart
+
+- service: name=queensland.service state=started enabled=yes
+
+- template: src=unbound.conf.j2 dest=/etc/unbound/unbound.conf  owner=root mode=0644
+  notify: unbound-restart
+
+- template: src=unbound.service.j2 dest=/etc/systemd/system/unbound.service owner=root mode=0644
+  notify: systemd-reload
+  notify: unbound-restart
+
+- service: name=unbound.service state=started enabled=yes
+
+- template: src=dns-announce.service.j2 dest=/etc/systemd/system/dns-announce.service owner=root mode=0644
+  notify: systemd-reload
+  notify: dns-announce-restart
+
+- service: name=dns-announce.service state=started enabled=yes

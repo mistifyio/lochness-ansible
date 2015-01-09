@@ -1,0 +1,14 @@
+[Unit]
+Description=Queensland DNS Server
+Wants=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/queensland -domain {{ lochness_domain }}.
+StandardOutput=inherit
+StandardError=journal
+RestartSec=5s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
