@@ -36,7 +36,15 @@ cat << EOF > $ADIR/host_vars/$ID
 machine_id: $ID
 EOF
 
-for S in tftpd dhcpd;  do
+for KEY in `etcdctl ls /lochness/config`; do
+    VALUE=`etcdctl get $KEY`
+    if [ $? -eq 0 ]; then
+        KEY=`basename $KEY`
+        printf "lochness_%s: \"%s\"\n" $KEY "$VALUE" >> $ADIR/host_vars/$ID
+    fi
+done
+
+for S in tftpd dhcpd dns;  do
     ENABLE="false"
     V=`etcdctl get /lochness/hypervisors/$ID/config/$S 2>&1`
     if [ $? -eq 0 ]; then
