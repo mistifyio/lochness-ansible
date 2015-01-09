@@ -12,3 +12,9 @@
 
 - service: name=tftpd.service state=started enabled=yes
 
+- template: src=tftpd-announce.service.j2 dest=/etc/systemd/system/tftpd-announce.service owner=root mode=0744
+  notify: systemd-reload
+  notify: tftpd-announce-restart
+
+- service: name=tftpd.service state=started enabled=yes
+
