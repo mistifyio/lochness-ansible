@@ -5,6 +5,6 @@ subnet 0.0.0.0 netmask 0.0.0.0 {
     default-lease-time {{ dhcpd_lease_time }};
     option domain-name-servers {{ lochness_nameservers|join(', ') }};
 
-    include /etc/dhcpd/hypervisors.conf;
-    include /etc/dhcpd/guests.conf;
+    include "/etc/dhcpd/hypervisors.conf";
+    include "/etc/dhcpd/guests.conf";
 }
