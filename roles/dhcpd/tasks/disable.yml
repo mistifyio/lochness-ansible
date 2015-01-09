@@ -19,4 +19,3 @@
 
 - file: path=/etc/systemd/system/dhcpd-announce.service state=absent
   notify: systemd-reload
- 
