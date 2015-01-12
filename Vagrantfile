@@ -1,5 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+
+# hacks to make CentOS look like our build of Mistify-OS
 $script = <<SCRIPT
 set -e
 
@@ -18,6 +20,12 @@ if [ ! -x /usr/bin/confd ] ; then
     mv confd-0.6.3-linux-amd64 /usr/bin/confd
     chmod +x /usr/bin/confd
 fi
+
+if [ ! -x /usr/bin/ansible ]; then
+    rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+    yum install ansible
+fi
+
 
 SCRIPT
 
