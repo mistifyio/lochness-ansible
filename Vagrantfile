@@ -23,8 +23,22 @@ fi
 
 if [ ! -x /usr/bin/ansible ]; then
     rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-    yum install ansible
+    yum install -y ansible
 fi
+
+if [ ! -x /usr/local/go/bin/go ]; then
+     yum install -y git-core mercurial
+     cd /tmp
+     curl -s -L -O https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz
+     tar -C /usr/local -zxf go1.4.linux-amd64.tar.gz
+fi
+
+cat <<EOS > /etc/profile.d/go.sh
+GOPATH=\\$HOME/go
+export GOPATH
+PATH=\\$GOPATH/bin:\\$PATH:/usr/local/go/bin
+export PATH
+EOS
 
 
 SCRIPT
