@@ -2,7 +2,7 @@
 Description=Announce Node
 
 [Service]
-ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set /nodes/{{machine_id}} '{ \"ip\": \"{{ ansible_default_ipv4.address }}\" }' > /dev/null; sleep 300; done"
+ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set /lochness/nodes/{{machine_id}} '{ \"ip\": \"{{ ansible_default_ipv4.address }}\" }' > /dev/null; sleep 300; done"
 User=nobody
 RestartSec=30s
 Restart=always

@@ -6,8 +6,8 @@ BindsTo=unbound.service
 After=unbound.service
 
 [Service]
-ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set /services/dns/{{machine_id}} '{ \"target\": \"{{machine_id}}.nodes.\", \"port\": 53 }' --ttl 60 > /dev/null; sleep 30; done"
-ExecStop=/usr/bin/etcdctl rm /services/dns/{{machine_id}}
+ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set /lochness/services/dns/{{machine_id}} '{ \"target\": \"{{machine_id}}.nodes.\", \"port\": 53 }' --ttl 60 > /dev/null; sleep 30; done"
+ExecStop=/usr/bin/etcdctl rm /lochness/services/dns/{{machine_id}}
 User=nobody
 RestartSec=10s
 Restart=always
