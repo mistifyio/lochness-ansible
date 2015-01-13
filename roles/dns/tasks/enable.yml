@@ -6,14 +6,18 @@
 
 - service: name=queensland.service state=started enabled=yes
 
-- template: src=unbound.conf.j2 dest=/etc/unbound/unbound.conf  owner=root mode=0644
-  notify: unbound-restart
+- file: path={{ dns_named_dir }} state=directory owner={{ dns_user }}
 
-- template: src=unbound.service.j2 dest=/etc/systemd/system/unbound.service owner=root mode=0644
+- file: path=/etc/named owner=root mode=0755
+
+- template: src=named.service.j2 dest=/etc/systemd/system/named.service owner=root mode=0644
   notify: systemd-reload
-  notify: unbound-restart
+  notify: named-restart
 
-- service: name=unbound.service state=started enabled=yes
+- template: src=named.conf.j2 dest=/etc/named/named.conf owner=root mode=0644
+  notify: named-restart
+
+- service: name=named.service state=started enabled=yes
 
 - template: src=dns-announce.service.j2 dest=/etc/systemd/system/dns-announce.service owner=root mode=0644
   notify: systemd-reload

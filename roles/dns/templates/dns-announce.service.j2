@@ -2,12 +2,12 @@
 Description=Announce dns
 BindsTo=queensland.service
 After=queensland.service
-BindsTo=unbound.service
-After=unbound.service
+BindsTo=named.service
+After=named.service
 
 [Service]
-ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set /lochness/services/dns/{{machine_id}} '{ \"target\": \"{{machine_id}}.nodes.\", \"port\": 53 }' --ttl 60 > /dev/null; sleep 30; done"
+ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set /lochness/services/dns/{{machine_id}} '{ \"target\": \"{{machine_id}}\", \"port\": 53 }' --ttl 60 > /dev/null; sleep 30; done"
 ExecStop=/usr/bin/etcdctl rm /lochness/services/dns/{{machine_id}}
 User=nobody
-RestartSec=10s
+RestartSec=30s
 Restart=always
