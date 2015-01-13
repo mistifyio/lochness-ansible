@@ -4,10 +4,10 @@
   with_items:
     - tftp-server
     - dhcp
-    - unbound
+    - bind
 
 - file: src=/sbin/{{ item }} dest=/usr/bin/{{ item }} state=link
   with_items:
     - in.tftpd
     - dhcpd
-    - unbound
+    - named
