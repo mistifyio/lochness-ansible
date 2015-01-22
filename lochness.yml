@@ -10,4 +10,4 @@
     - tftpd
     - dhcpd
     - dns
-
+    - confd
