@@ -1,4 +1,4 @@
 ---
 
 - name: etcd-restart
-  action: name=etcd state=restarted
+  action: service name=etcd state=restarted
