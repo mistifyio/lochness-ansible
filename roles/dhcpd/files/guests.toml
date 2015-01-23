@@ -5,7 +5,6 @@ uid = 0
 mode = "0644"
 prefix = "/lochness"
 keys = [
-  "/config/",
   "/subnets/",
   "/guests/",
 ]
