@@ -11,13 +11,14 @@ group hypervisors {
     }
 {{ range gets "/hypervisors/*/metadata" }}
     {{ $hv := json .Value }}
+    {{ if and $hv.gateway $hv.network }}
     host {{ $hv.id }} {
         hardware ethernet   {{ $hv.mac }};
         fixed-address       {{ $hv.ip }};
         option routers      {{ $hv.gateway }};
         option subnet-mask  {{ $hv.netmask }};
-
     }
+    {{ end }}
 {{ end }}
 }
 {% endraw %}
