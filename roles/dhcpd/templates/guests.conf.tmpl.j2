@@ -1,12 +1,8 @@
 # Confd Generated
 {{ '{{' }} $domain := "{{ lochness_domain }}" }}
 {% raw %}
-{{ if exists "/config/domain" }}
-    $domain = {{ getv "/config/domain" }}
-{{ end }}
 group guests {
     option domain-name  "guests.{{ $domain }}";
-
 {{ range gets "/guests/*/metadata" }}
     {{ $guest := json .Value }}
     {{ if and $guest.hypervisor_id $guest.subnet_id }}

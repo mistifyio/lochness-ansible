@@ -1,9 +1,6 @@
 # Confd Generated
 {{ '{{' }} $domain := "{{ lochness_domain }}" }}
 {% raw %}
-{{ if exists "/config/domain" }}
-    $domain = {{ getv "/config/domain" }}
-{{ end }}
 group hypervisors {
     option domain-name "nodes.{{ $domain }}";
     if exists user-class and option user-class = "iPXE" {
