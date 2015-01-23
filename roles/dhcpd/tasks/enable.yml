@@ -17,6 +17,18 @@
   notify: systemd-reload
   notify: dhcpd-announce-restart
 
+- template: src=hypervisors.conf.tmpl.j2 dest=/etc/confd/templates/hypervisors.conf.tmpl owner=root mode=0644
+  notify: confd-restart
+
+- copy: src=hypervisors.toml dest=/etc/confd/conf.d/hypervisors.toml owner=root mode=0644
+  notify: confd-restart
+
+- template: src=guests.conf.tmpl.j2 dest=/etc/confd/templates/guests.conf.tmpl owner=root mode=0644
+  notify: confd-restart
+
+- copy: src=guests.toml dest=/etc/confd/conf.d/guests.toml owner=root mode=0644
+  notify: confd-restart
+
 - service: name=dhcpd.service state=started enabled=yes
 
 - service: name=dhcpd-announce.service state=started enabled=yes
