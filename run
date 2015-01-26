@@ -44,7 +44,7 @@ for KEY in `etcdctl ls /lochness/config`; do
     fi
 done
 
-for S in tftpd dhcpd dns;  do
+for S in tftpd dhcpd dns enfield;  do
     ENABLE="false"
     V=`etcdctl get /lochness/hypervisors/$ID/config/$S 2>&1`
     if [ $? -eq 0 ]; then
