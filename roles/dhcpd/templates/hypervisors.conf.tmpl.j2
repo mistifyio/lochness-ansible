@@ -4,7 +4,7 @@
 group hypervisors {
     option domain-name "nodes.{{ $domain }}";
     if exists user-class and option user-class = "iPXE" {
-        filename "http://ipxe.services.{{ $domain }}/ipxe/${net0/ip}";
+        filename "http://ipxe.services.{{ $domain }}:8888/ipxe/${net0/ip}";
     } else {
         next-server tftp.services.{{ $domain }};
         filename "undionly.kpxe";
