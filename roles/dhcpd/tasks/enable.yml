@@ -1,5 +1,8 @@
 ---
 
+- queensland: service=dns prefix=/lochness
+  register: dhcpd_nameservers
+
 - file: path=/etc/dhcpd state=directory owner=root mode=0755
 
 - template: src=dhcpd.conf.j2 dest=/etc/dhcpd/dhcpd.conf owner=root mode=0644
