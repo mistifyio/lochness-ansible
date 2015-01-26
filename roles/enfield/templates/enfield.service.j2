@@ -1,0 +1,14 @@
+[Unit]
+Description=Enfield iPXE Config server
+Wants=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/enfield -base http://ipxe.services.{{ lochness_domain }}:8888 -options "noapic acpi=off ramdisk_size=200000 rw mistify.zfs=auto"
+StandardOutput=journal
+StandardError=journal
+RestartSec=20s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
