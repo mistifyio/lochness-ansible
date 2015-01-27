@@ -6,8 +6,9 @@
   roles:
     - lochness
     - etcd
+    - dns
     - agent
     - tftpd
     - dhcpd
-    - dns
     - confd
+    - enfield
