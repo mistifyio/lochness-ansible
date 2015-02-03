@@ -1,0 +1,10 @@
+[template]
+src = "isc-dhcp-relay.tmpl"
+dest = "/etc/default/isc-dhcp-relay"
+uid = 0
+mode = "0644"
+prefix = "/lochness"
+keys = [
+  "/hypervisors/",
+]
+reload_cmd = "systemctl restart dhcrelay"

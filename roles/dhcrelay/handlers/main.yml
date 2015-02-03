@@ -1,0 +1,4 @@
+---
+
+- name: dhcrelay-restart
+  action: service name=dhcrelay state=restarted

@@ -1,0 +1,22 @@
+# Confd Generated
+
+{{ $servers := "" }}
+{{ range gets "/hypervisors/*" }}
+    {{ $hID := base .Key }}
+    {{ if eq (getv (printf "/hypervisors/%s/config/dhcpd" $hid))) "true" "1" "yes" }}
+        {{ $h = (printf "/hypervisors/%s/metadata" $hid | getv | json }}
+        {{ if eq $servers "" }}
+            {{ $servers = $h.ip }}
+        {{ else }}
+            {{ $servers = printf "%s,%s" $servers $h.ip }}
+        {{ end }}
+    {{ end }}
+{{ end}}
+# What servers should the DHCP relay forward requests to?
+SERVERS="{{ $servers }}"
+
+# On what interfaces should the DHCP relay (dhrelay) serve DHCP requests?
+INTERFACES=""
+
+# Additional options that are passed to the DHCP relay daemon?
+OPTIONS=""

@@ -1,0 +1,9 @@
+---
+
+- copy: path=isc-dhcp-relay.toml dest=/etc/confd/conf.d/isc-dhcp-relay.toml owner=root mode=0644
+  notify: confd-restart
+
+- copy: path=isc-dhcp-relay.tmpl dest=/etc/confd/templates/isc-dhcp-relay.tmpl owner=root mode=0644
+  notify: confd-restart
+
+- service: name=dhcrelay.service state=started enabled=yes

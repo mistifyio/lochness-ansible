@@ -10,5 +10,6 @@
     - agent
     - tftpd
     - dhcpd
+    - dhcrelay
     - confd
     - enfield

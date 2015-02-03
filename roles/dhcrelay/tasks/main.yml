@@ -1,0 +1,7 @@
+---
+
+- include: enable.yml
+  when: dhcrelay_enable = True or dhcrelay_enable == "true" or dhcrelay_enable == "True"
+
+- include: disable.yml
+  when: not dhcrelay_enable or dhcrelay_enaable == "false" or dhcrelay_enable == "False"
