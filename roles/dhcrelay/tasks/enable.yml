@@ -1,9 +1,13 @@
 ---
 
-- copy: path=isc-dhcp-relay.toml dest=/etc/confd/conf.d/isc-dhcp-relay.toml owner=root mode=0644
+- copy: src=isc-dhcp-relay.tmpl dest=/etc/confd/templates/isc-dhcp-relay.tmpl owner=root mode=0644
   notify: confd-restart
 
-- copy: path=isc-dhcp-relay.tmpl dest=/etc/confd/templates/isc-dhcp-relay.tmpl owner=root mode=0644
+- template: src=isc-dhcp-relay.toml.j2 dest=/etc/confd/conf.d/isc-dhcp-relay.toml owner=root mode=0644
   notify: confd-restart
+
+- template: src=dhcrelay.service.j2 dest=/etc/systemd/system/dhcrelay.service owner=root mode=0644
+  notify: systemd-reload
+  notify: dhcrelay-restart
 
 - service: name=dhcrelay.service state=started enabled=yes

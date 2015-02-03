@@ -3,8 +3,8 @@ src = "isc-dhcp-relay.tmpl"
 dest = "/etc/default/isc-dhcp-relay"
 uid = 0
 mode = "0644"
-prefix = "/lochness"
+prefix = "{{ lochness_etcd_prefix }}"
 keys = [
-  "/hypervisors/",
+  "/hypervisors",
 ]
 reload_cmd = "systemctl restart dhcrelay"
