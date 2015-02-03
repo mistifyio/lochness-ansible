@@ -3,7 +3,7 @@ src = "guests.conf.tmpl"
 dest = "/etc/dhcpd/guests.conf"
 uid = 0
 mode = "0644"
-prefix = "/lochness"
+prefix = "{{ lochness_etcd_prefix }}"
 keys = [
   "/subnets/",
   "/guests/",
