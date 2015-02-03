@@ -4,7 +4,7 @@ Wants=network.target etcd.service
 After=network.target etcd.service
 
 [Service]
-ExecStart=/usr/bin/confd
+ExecStart=/usr/sbin/confd
 StandardOutput=inherit
 StandardError=journal
 RestartSec=30s
