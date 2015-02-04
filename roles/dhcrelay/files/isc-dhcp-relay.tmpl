@@ -7,4 +7,4 @@ SERVERS="{{ range gets "/hypervisors/*/metadata" }}{{ $h := json .Value }}{{ $dh
 INTERFACES=""
 
 # Additional options that are passed to the DHCP relay daemon?
-OPTIONS=""
+OPTIONS="-4 -d -q"

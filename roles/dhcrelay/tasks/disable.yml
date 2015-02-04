@@ -14,3 +14,5 @@
 
 - file: path=/etc/confd/conf.d/isc-dhcp-relay.toml state=absent
   notify: confd-restart
+
+- file: path=/etc/sysconfig/isc-dhcp-relay state=absent
