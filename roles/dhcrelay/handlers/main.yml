@@ -2,3 +2,6 @@
 
 - name: dhcrelay-restart
   action: service name=dhcrelay state=restarted
+
+- name: dhcrelay-announce-restart
+  action: service name=dhcrelay-announce state=restarted

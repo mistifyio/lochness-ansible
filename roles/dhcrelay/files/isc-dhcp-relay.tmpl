@@ -1,7 +1,7 @@
 # Confd Generated
 
 # What servers should the DHCP relay forward requests to?
-SERVERS="{{ range gets "/hypervisors/*/metadata" }}{{ $h := json .Value }}{{ $dhcpdKey := printf "/hypervisors/%s/config/dhcpd" $h.id }}{{ if and (ne $h.ip "") (exists $dhcpdKey) }}{{ if eq (getv $dhcpdKey) "true" "1" "yes" }}{{ $h.ip }} {{ end }}{{ end }}{{ end }}"
+SERVERS="{{ range ls "/service/dhcpd" }}{{ $node := printf "/nodes/%s" . | getv | json }}{{ if ne $node.ip "" }}{{ $node.ip }} {{ end }}{{ end }}"
 
 # On what interfaces should the DHCP relay (dhrelay) serve DHCP requests?
 INTERFACES=""

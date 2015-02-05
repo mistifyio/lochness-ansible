@@ -10,4 +10,10 @@
   notify: systemd-reload
   notify: dhcrelay-restart
 
+- template: src=dhcrelay-announce.service.j2 dest=/etc/systemd/system/dhcrelay-announce.service owner=root mode=0644
+  notify: systemd-reload
+  notify: dhcrelay-announce-restart
+
 - service: name=dhcrelay.service state=started enabled=yes
+
+- service: name=dhcrelay-announce.service state=started enabled=yes

@@ -5,6 +5,7 @@ uid = 0
 mode = "0644"
 prefix = "{{ lochness_etcd_prefix }}"
 keys = [
-  "/hypervisors",
+  "/service/",
+  "/nodes/",
 ]
 reload_cmd = "systemctl restart dhcrelay"
