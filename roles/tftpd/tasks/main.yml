@@ -3,7 +3,7 @@
 - file: path={{ tftpd_dir }} state=directory owner=root mode=0755
 
 - include: enable.yml
-  when: tftpd_enable == True or tftpd_enable == "true" or tftpd_enable == "True"
+  when: tftpd_enable
 
 - include: disable.yml
-  when: not tftpd_enable or tftpd_enable == "false" or tftpd_enable == "False"
+  when: not tftpd_enable

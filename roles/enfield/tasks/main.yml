@@ -1,4 +1,4 @@
 ---
 - include: enable.yml
-  when: enfield_enable == True or enfield_enable == "true" or enfield_enable == "True"
+  when: enfield_enable
 
