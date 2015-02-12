@@ -35,7 +35,7 @@ def getID():
 
 
 def boolize(s):
-    return s.lower() in ('1', 'true', 'yes')
+    return s.lower() in ('1', 'true', 'yes', 'enabled', 'enable', 'doit')
 
 
 def etcdget(url):
