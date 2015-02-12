@@ -11,6 +11,14 @@ import sys
 import tempfile
 
 
+def warn(msg, **kwargs):
+    kvs = []
+    for k, v in kwargs.iteritems():
+        kvs.append('%s=%s' % (k, v))
+
+    print("WARN", msg, " ".join(kvs))
+
+
 def getID():
     if len(sys.argv) == 2:
         return sys.argv[1]
@@ -57,7 +65,7 @@ with open(adir + '/hosts', 'w') as f:
 
 status, resp = etcdget('config?recursive=true')
 if status != 200:
-    print('failed to get config')
+    warn('failed to get config', error=resp['message'])
 else:
     nodes = resp['node']['nodes']
     for node in nodes:
@@ -71,7 +79,7 @@ for service in services:
 
     enable = 'false'
     if status != 200:
-        print('failed to get service config')
+        warn('failed to get service config', service=service, error=resp['message'])
     else:
         enabled = boolize(resp['node']['value'])
         if enabled is True:
@@ -94,6 +102,6 @@ ret = subprocess.call(args)
 if ret == 0:
     shutil.rmtree(adir)
 else:
-    print("ansible-playbook returned an error")
+    warn("ansible-playbook returned an error", exit_status=ret)
 
 exit(ret)
