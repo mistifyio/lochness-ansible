@@ -1,0 +1,29 @@
+---
+- name: Create rsyslog spool directory
+  file:
+    path: '{{ rsyslog_spool }}'
+    state: directory
+    owner: root
+    mode: 0755
+
+- name: Create rsyslog config fragment directory
+  file:
+    path: '{{ rsyslog_conf_dir }}'
+    state: directory
+    owner: root
+    mode: 0755
+
+- name: Rsyslogd basic configuration
+  template:
+    src: rsyslog.conf.j2
+    dest: '{{ rsyslog_conf }}'
+    mode: 0644
+    owner: root
+    group: root
+    backup: no
+
+- include: hypervisor.yml
+  when: logserver_enable == false
+
+- include: logserver.yml
+  when: logserver_enable == true

@@ -1,0 +1,8 @@
+---
+rsyslog_conf: /etc/rsyslog.conf
+rsyslog_conf_dir: /etc/rsyslog.d
+rsyslog_conf_hypervisor: /etc/rsyslog.d/hypervisor.conf
+rsyslog_conf_logserver: /etc/rsyslog.d/logserver.conf
+rsyslog_spool: /var/lib/rsyslog
+logserver_zfs_fs: mistify/logs
+logservers: 1.2.3.4,5.6.7.8

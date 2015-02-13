@@ -1,0 +1,22 @@
+
+#### LOGSERVER RULES ####
+
+# Log anything (except mail) of level info or higher.
+# Don't log private authentication messages!
+*.info;mail.none;authpriv.none;cron.none                /mistify/logs/messages
+
+# The authpriv file has restricted access.
+authpriv.*                                              /mistify/logs/secure
+
+# Log all the mail messages in one place.
+mail.*                                                  /mistify/logs/maillog
+
+# Log cron stuff
+cron.*                                                  /mistify/logs/cron
+
+# Save news errors of level crit and higher in a special file.
+uucp,news.crit                                          /mistify/logs/spooler
+
+# Save boot messages also to boot.log
+local7.*                                                /mistify/logs/boot.log
+

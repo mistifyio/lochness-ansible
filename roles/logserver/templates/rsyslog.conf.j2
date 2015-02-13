@@ -1,0 +1,25 @@
+#### MODULES ####
+
+# Provides support for local system logging (e.g. via logger command)
+module(load="imuxsock")
+
+# Provides kernel logging support (previously done by rklogd)
+module(load="imklog")
+
+{%- if logserver_enable -%}
+# Provides UDP syslog reception
+module(load="imudp") # needs to be done just once
+input(type="imudp" port="514")
+
+# Provides TCP syslog reception
+module(load="imtcp") # needs to be done just once
+input(type="imtcp" port="514")
+{%- endif -%}
+
+#### GLOBAL DIRECTIVES ####
+
+# Use default timestamp format
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+
+# Include all config files in /etc/rsyslog.d/
+$IncludeConfig /etc/rsyslog.d/*.conf

@@ -1,0 +1,14 @@
+- name: Rsyslogd config for Generic Hypervisor role
+  template:
+    src: hypervisor.conf.j2
+    dest: '{{ rsyslog_conf_hypervisor }}'
+    mode: 0644
+    owner: root
+    group: root
+    backup: no
+  notify: rsyslog.service-restart
+
+- name: Remove logserver-specific config
+  file:
+    path: '{{ rsyslog_conf_logserver }}'
+    state: absent
