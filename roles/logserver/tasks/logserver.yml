@@ -1,3 +1,14 @@
+- name: Create ZFS filesystem for logserver storage
+  zfs:
+    name: '{{ logserver_zfs_fs }}'
+    state: present
+
+- name: Remove Hypervisor-specific config
+  file:
+    path: '{{ rsyslog_conf_hypervisor }}'
+    state: absent
+  notify: rsyslog.service-restart
+
 - name: Rsyslogd config and ZFS filesystem for Log Server role
   template:
     src: logserver.conf.j2
@@ -8,12 +19,3 @@
     backup: no
   notify: rsyslog.service-restart
 
-- name: Remove Hypervisor-specific config
-  file:
-    path: '{{ rsyslog_conf_hypervisor }}'
-    state: absent
-
-- name: Create ZFS filesystem for logserver storage
-  zfs:
-    name: '{{ logserver_zfs_fs }}'
-    state: present
