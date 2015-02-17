@@ -4,12 +4,12 @@
   vars:
 
   roles:
-    - lochness
-    - etcd
-    - dns
-    - agent
-    - tftpd
-    - dhcpd
-    - dhcrelay
-    - confd
-    - enfield
+    - {role: lochness, tags: lochness}
+    - {role: etcd, tags: etcd}
+    - {role: dns, tags: dns}
+    - {role: agent, tags: agent}
+    - {role: tftpd, tags: tftpd}
+    - {role: dhcpd, tags: dhcpd}
+    - {role: dhcrelay, tags: dhcrelay}
+    - {role: confd, tags: confd}
+    - {role: enfield, tags: enfield}

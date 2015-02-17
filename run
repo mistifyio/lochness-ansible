@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import argparse
 
 
 def warn(msg, **kwargs):
@@ -20,9 +21,6 @@ def warn(msg, **kwargs):
 
 
 def getID():
-    if len(sys.argv) == 2:
-        return sys.argv[1]
-
     for name in ('/etc/machine_id', '/etc/machine-id', '/sys/class/dmi/id/product_uuid'):
         if os.path.exists(name):
             with open(name) as f:
@@ -46,12 +44,16 @@ def etcdget(url):
     resp = json.load(response)
     return status, resp
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', '--id', default=getID())
+parser.add_argument('-t', '--tag', action="append")
+parsedArgs = parser.parse_args()
 
-id = getID()
+id = parsedArgs.id
+tags = parsedArgs.tag
 if id is '':
     print('need an ID!!!')
     exit(-5)
-
 
 config = {'machine_id': id}
 conn = httplib.HTTPConnection('localhost:4001')
@@ -98,6 +100,8 @@ args = ['ansible-playbook',
         '--inventory', adir + '/hosts',
         '--connection=local',
         './lochness.yml']
+if tags:
+    args.extend(['--tags', ','.join(tags)])
 ret = subprocess.call(args)
 if ret == 0:
     shutil.rmtree(adir)
