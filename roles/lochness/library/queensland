@@ -42,7 +42,7 @@ def main():
 
     dot = re.compile('\.')
 
-    for node in x['node']['nodes']:
+    for node in x['node'].get('nodes', []):
         val = json.loads(node['value'])
         name = val['target']
         if not name:
