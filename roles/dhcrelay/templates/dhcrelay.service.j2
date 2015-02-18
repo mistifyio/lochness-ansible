@@ -2,6 +2,7 @@
 Description=IPv4 DHCP relay
 Wants=network.target
 After=network.target
+Wants=dhcrelay-announce.service
 
 [Service]
 EnvironmentFile=/etc/sysconfig/isc-dhcp-relay

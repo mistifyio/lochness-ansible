@@ -2,6 +2,7 @@
 Description=Enfield iPXE Config server
 Wants=network.target
 After=network.target
+Wants=enfield-annnounce.service
 
 [Service]
 ExecStart=/usr/sbin/enfield -base http://ipxe.services.{{ lochness_domain }}:8888 -options "noapic acpi=off ramdisk_size=200000 rw mistify.zfs=auto"
@@ -12,3 +13,4 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+WantedBy=etcd.service
