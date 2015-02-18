@@ -1,7 +1,6 @@
 [Unit]
 Description=Announce tftpd
 BindsTo=tftpd.service
-After=tftpd.service
 
 [Service]
 ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set {{ lochness_etcd_prefix }}/services/tftpd/{{machine_id}} '{ \"target\": \"{{machine_id}}.nodes.\", \"port\": 67 }' --ttl 60 > /dev/null; sleep 30; done"

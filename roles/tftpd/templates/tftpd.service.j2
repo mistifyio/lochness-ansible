@@ -1,6 +1,6 @@
 [Unit]
 Description=TFTP Daemon
-Wants=tftpd-announce.service
+BindsTo=tftpd-announce.service
 
 [Service]
 ExecStart=/usr/bin/in.tftpd -s {{ tftpd_dir }}

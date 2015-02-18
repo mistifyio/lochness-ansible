@@ -2,7 +2,7 @@
 Description=IPv4 DHCP server
 Wants=network.target
 After=network.target
-Wants=dhcpd-announce.service
+BindsTo=dhcpd-announce.service
 
 [Service]
 ExecStart=/usr/bin/dhcpd -4 -d -q -f -cf /etc/dhcpd/dhcpd.conf
