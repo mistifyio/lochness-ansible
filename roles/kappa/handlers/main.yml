@@ -1,0 +1,4 @@
+---
+
+- name: kappa-restart
+  action: service name=kappa.service state=restarted
