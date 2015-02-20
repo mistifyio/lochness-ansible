@@ -13,3 +13,4 @@
     - {role: dhcrelay, tags: dhcrelay}
     - {role: confd, tags: confd}
     - {role: enfield, tags: enfield}
+    - {role: kappa, tags: kappa}
