@@ -1,8 +1,9 @@
 [Unit]
 Description=Announce Node
+Wants=etcd.service
 
 [Service]
-ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set {{ lochness_etcd_prefix }}/nodes/{{machine_id}} '{ \"ip\": \"{{ ansible_default_ipv4.address }}\" }' > /dev/null; sleep 300; done"
+ExecStart=/usr/sbin/queensland node --name={{machine_id}} --address={{ ansible_default_ipv4.address }}
 User=nobody
 RestartSec=30s
 Restart=always
