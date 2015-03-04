@@ -2,10 +2,10 @@
 Description=Announce tftpd
 BindsTo=tftpd.service
 After=tftpd.service
+Wants=etcd.service
 
 [Service]
-ExecStart=/bin/sh -c "while true; do /usr/bin/etcdctl set {{ lochness_etcd_prefix }}/services/tftpd/{{machine_id}} '{ \"target\": \"{{machine_id}}\", \"port\": 67 }' --ttl 60 > /dev/null; sleep 30; done"
-ExecStop=/usr/bin/etcdctl rm {{ lochness_etcd_prefix }}/services/tftpd/{{machine_id}}
+ExecStart=/usr/sbin/queensland announce tftpd --name={{machine_id}} --port=69
 User=nobody
 RestartSec=10s
 Restart=always

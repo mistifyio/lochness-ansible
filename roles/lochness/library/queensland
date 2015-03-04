@@ -29,8 +29,8 @@ def main():
     module = AnsibleModule(argument_spec=arg_spec, supports_check_mode=False)
 
     baseurl = '%s/v2/keys/' % ANSIBLE_ETCD_URL
-    service = module.params['service']
-    prefix = module.params['prefix'] or ""
+    service = module.params['service'].strip('/')
+    prefix = module.params.get('prefix', '').strip('/')
 
     url = "%s/%s/services/%s?recursive=true" % (baseurl, prefix, service)
 
@@ -42,7 +42,7 @@ def main():
 
     dot = re.compile('\.')
 
-    for node in x['node']['nodes']:
+    for node in x['node'].get('nodes', []):
         val = json.loads(node['value'])
         name = val['target']
         if not name:

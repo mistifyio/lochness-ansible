@@ -16,8 +16,8 @@ fi
 
 if [ ! -x /usr/bin/confd ] ; then
     cd /tmp/
-    curl -L -O https://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64
-    mv confd-0.6.3-linux-amd64 /usr/bin/confd
+    curl -L -O https://github.com/kelseyhightower/confd/releases/download/v0.7.1/confd-0.7.1-linux-amd64
+    mv confd-0.7.1-linux-amd64 /usr/bin/confd
     chmod +x /usr/bin/confd
 fi
 

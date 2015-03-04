@@ -1,11 +1,11 @@
 [Unit]
-Description=Queensland DNS Server
+Description=IPv4 DHCP relay
 Wants=network.target
 After=network.target
-Requires=etcd.service
 
 [Service]
-ExecStart=/usr/sbin/queensland server -domain={{lochness_domain}}.
+EnvironmentFile=/etc/sysconfig/isc-dhcp-relay
+ExecStart=/usr/sbin/dhcrelay $OPTIONS $INTERFACES $SERVERS
 StandardOutput=inherit
 StandardError=journal
 RestartSec=5s
