@@ -1,6 +1,6 @@
 ---
 
-- queensland: service=dns prefix={{ lochness_etcd_prefix }}
+- queensland: service=dns
   register: dhcpd_nameservers
 
 - file: path=/etc/dhcpd state=directory owner=root mode=0755

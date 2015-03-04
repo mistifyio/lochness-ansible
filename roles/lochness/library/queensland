@@ -30,7 +30,7 @@ def main():
 
     baseurl = '%s/v2/keys/' % ANSIBLE_ETCD_URL
     service = module.params['service'].strip('/')
-    prefix = module.params.get('prefix', '').strip('/')
+    prefix = module.params.get('prefix', '/queensland').strip('/')
 
     url = "%s/%s/services/%s?recursive=true" % (baseurl, prefix, service)
 
