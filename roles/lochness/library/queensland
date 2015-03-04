@@ -23,14 +23,14 @@ if os.getenv('ANSIBLE_ETCD_URL') is not None:
 def main():
     arg_spec = dict(
         service=dict(required=True),
-        prefix=dict(required=False)
+        prefix=dict(required=False,default='/queensland')
     )
 
     module = AnsibleModule(argument_spec=arg_spec, supports_check_mode=False)
 
     baseurl = '%s/v2/keys/' % ANSIBLE_ETCD_URL
     service = module.params['service'].strip('/')
-    prefix = module.params.get('prefix', '').strip('/')
+    prefix = modules.params['prefix'].strip('/')
 
     url = "%s/%s/services/%s?recursive=true" % (baseurl, prefix, service)
 
