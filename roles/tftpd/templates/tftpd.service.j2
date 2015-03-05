@@ -2,7 +2,7 @@
 Description=TFTP Daemon
 
 [Service]
-ExecStart=/usr/bin/in.tftpd -s {{ tftpd_dir }}
+ExecStart=/usr/sbin/in.tftpd -s {{ tftpd_dir }}
 StandardInput=socket
 StandardOutput=inherit
 StandardError=journal
