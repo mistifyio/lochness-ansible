@@ -18,7 +18,7 @@ except ImportError:
 
 ANSIBLE_ETCD_URL = 'http://127.0.0.1:4001'
 if os.getenv('ANSIBLE_ETCD_URL') is not None:
-    ANSIBLE_ETCD_URL = os.environ['ANSIBLE_ETCD_URL']
+    ANSIBLE_ETCD_URL = os.environ['ANSIBLE_ETCD_URL'].strip('/')
 
 def main():
     arg_spec = dict(
@@ -28,11 +28,11 @@ def main():
 
     module = AnsibleModule(argument_spec=arg_spec, supports_check_mode=False)
 
-    baseurl = '%s/v2/keys/' % ANSIBLE_ETCD_URL
     service = module.params['service'].strip('/')
-    prefix = modules.params['prefix'].strip('/')
+    prefix = module.params['prefix'].strip('/')
+    options = '?recursive=true'
 
-    url = "%s/%s/services/%s?recursive=true" % (baseurl, prefix, service)
+    url = '/'.join((ANSIBLE_ETCD_URL, 'v2', 'keys', prefix, 'services', service)) + options
 
     nodes=dict()
 
@@ -44,13 +44,17 @@ def main():
 
     for node in x['node'].get('nodes', []):
         val = json.loads(node['value'])
+
         name = val['target']
         if not name:
             continue
+
         if dot.search(name):
             continue
-        url = "%s/%s/nodes/%s" % (baseurl, prefix, name)
+
+        url = '/'.join((ANSIBLE_ETCD_URL, 'v2', 'keys', prefix, 'nodes', name))
         r = urllib2.urlopen(url)
+
         data = r.read()
         y = json.loads(data)
         val = json.loads(y['node']['value'])
