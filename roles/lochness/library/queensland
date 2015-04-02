@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # based on etcd lookup plugin by
 # (c) 2013, Jan-Piet Mens <jpmens(at)gmail.com>
 #
