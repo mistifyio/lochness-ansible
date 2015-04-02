@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 
+import argparse
 import httplib
 import json
 import os
@@ -9,7 +10,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import argparse
+import urlparse
 
 
 def warn(msg, **kwargs):
@@ -47,6 +48,9 @@ def etcdget(url):
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--id', default=getID())
 parser.add_argument('-t', '--tag', action="append")
+parser.add_argument('-e', '--etcd',
+        default=os.getenv('ETCD_ADDRESS', 'http://localhost:4001'),
+        help='address of etcd node, default:http://localhost:4001')
 parsedArgs = parser.parse_args()
 
 id = parsedArgs.id
@@ -56,7 +60,9 @@ if id is '':
     exit(-5)
 
 config = {'machine_id': id}
-conn = httplib.HTTPConnection('localhost:4001')
+
+eaddr = urlparse.urlparse(parsedArgs.etcd).netloc
+conn = httplib.HTTPConnection(eaddr)
 adir = tempfile.mkdtemp()
 os.mkdir(adir + '/host_vars')
 
