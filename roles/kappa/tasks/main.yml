@@ -6,6 +6,5 @@
 
 - copy: src=kappa.service dest=/etc/systemd/system/kappa.service owner=root mode=0644
   notify: systemd-reload
-  notify: kappa-restart
 
 - service: name=kappa state=started enabled=yes
