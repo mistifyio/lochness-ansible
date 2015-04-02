@@ -10,6 +10,7 @@
 from ansible import utils
 import os
 import urllib2
+import time
 try:
     import json
 except ImportError:
@@ -19,6 +20,23 @@ except ImportError:
 ANSIBLE_ETCD_URL = 'http://127.0.0.1:4001'
 if os.getenv('ANSIBLE_ETCD_URL') is not None:
     ANSIBLE_ETCD_URL = os.environ['ANSIBLE_ETCD_URL'].strip('/')
+
+# TODO(mm) may no longer be necessary
+def get(url):
+    t = .100
+    for i in range(5):
+        try:
+            r = urllib2.urlopen(url)
+            if r.getcode() == 200:
+                return r
+
+        except urllib2.URLError as e:
+            pass
+
+        time.sleep(t)
+        t *= 2
+
+    return None
 
 def main():
     arg_spec = dict(
@@ -36,7 +54,10 @@ def main():
 
     nodes=dict()
 
-    r = urllib2.urlopen(url)
+    r = get(url)
+    if r is None:
+        raise ValueError('could not reach dns service')
+
     data = r.read()
     x = json.loads(data)
 
@@ -53,7 +74,9 @@ def main():
             continue
 
         url = '/'.join((ANSIBLE_ETCD_URL, 'v2', 'keys', prefix, 'nodes', name))
-        r = urllib2.urlopen(url)
+        r = get(url)
+        if r is None:
+            continue
 
         data = r.read()
         y = json.loads(data)
