@@ -1,7 +1,7 @@
 [Unit]
 Description=Mistify Core Agent
-After=network.target mistify-agent-libvirt.service mistify-agent-image.service
-Wants=mistify-agent-libvirt.service mistify-agent-image.service
+After=network.target mistify-agent-libvirt.service mistify-agent-image.service mistify-agent-docker.service
+Wants=mistify-agent-libvirt.service mistify-agent-image.service mistify-agent-docker.service
 
 [Service]
 Type=simple

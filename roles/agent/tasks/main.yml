@@ -14,6 +14,12 @@
 
 - service: name=mistify-agent-libvirt state=started enabled=yes
 
+- template: src=mistify-agent-docker.service.j2 dest=/etc/systemd/system/mistify-agent-docker.service owner=root mode=0744
+  notify: systemd-reload
+  notify: mistify-agent-docker-restart
+
+- service: name=mistify-agent-docker state=started enabled=yes
+
 - copy: dest=/etc/mistify/agent.json src=agent.json owner=root mode=0444
   notify: mistify-agent-restart
 
