@@ -14,3 +14,4 @@
     - {role: confd, tags: confd}
     - {role: enfield, tags: enfield}
     - {role: kappa, tags: kappa}
+    - {role: cherufe, tags: cherufe}
