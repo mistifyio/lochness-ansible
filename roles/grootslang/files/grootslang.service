@@ -1,5 +1,5 @@
 [Unit]
-Description=Grootslang Hypervisor Management
+Description=Lochness Hypervisor Management
 Wants=network.target etcd.service
 After=network.target etcd.service
 
