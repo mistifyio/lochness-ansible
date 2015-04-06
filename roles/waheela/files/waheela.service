@@ -1,5 +1,5 @@
 [Unit]
-Description=Waheela Guest Management
+Description=Lochness Guest Management
 Wants=network.target etcd.service
 After=network.target etcd.service
 
