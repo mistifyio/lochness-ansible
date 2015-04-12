@@ -6,7 +6,8 @@
 - file: path=/etc/etcd state=directory owner=root mode=0755
 
 - template: src=etcd.service.j2 dest=/etc/systemd/system/etcd.service
-  notify: systemd-reload
-  notify: etcd-restart
+  notify:
+    - systemd-reload
+    - etcd-restart
 
 - service: name=etcd state=started enabled=yes
