@@ -10,4 +10,10 @@
     - systemd-reload
     - etcd-restart
 
+- template: src=etcd-announce.service.j2 dest=/etc/systemd/system/etcd-announce.service owner=root mode=0644
+  when: etcd_enable
+  notify:
+    - systemd-reload
+    - etcd-restart
+
 - service: name=etcd state=started enabled=yes
