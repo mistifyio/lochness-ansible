@@ -10,3 +10,4 @@
 
 - service: name=node-announce.service state=started enabled=yes
 
+- template: src=hosts.j2 dest=/etc/hosts owner=root mode=0644
