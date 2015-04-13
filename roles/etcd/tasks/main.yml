@@ -16,7 +16,7 @@
   when: etcd_enable
   notify:
     - systemd-reload
-    - etcd-restart
+    - etcd-announce-restart
 
 - service: name=etcd-announce state=started enabled=yes
   when: etcd_enable
