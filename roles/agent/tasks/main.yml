@@ -19,6 +19,7 @@
   notify: mistify-agent-docker-restart
 
 - service: name=mistify-agent-docker state=started enabled=yes
+- service: name=docker state=started enabled=yes
 
 - template: src=mistify-agent.service.j2 dest=/etc/systemd/system/mistify-agent.service owner=root mode=0644
   notify: systemd-reload
