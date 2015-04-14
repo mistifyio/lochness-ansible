@@ -5,7 +5,7 @@ After=network.target
 Requires=etcd.service
 
 [Service]
-ExecStart=/usr/sbin/queensland server -domain={{lochness_domain}}.
+ExecStart=/usr/sbin/queensland server --domain={{lochness_domain}}.
 StandardOutput=inherit
 StandardError=journal
 RestartSec=5s

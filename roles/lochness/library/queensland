@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # based on etcd lookup plugin by
 # (c) 2013, Jan-Piet Mens <jpmens(at)gmail.com>
 #
@@ -10,6 +10,7 @@
 from ansible import utils
 import os
 import urllib2
+import time
 try:
     import json
 except ImportError:
@@ -18,7 +19,24 @@ except ImportError:
 
 ANSIBLE_ETCD_URL = 'http://127.0.0.1:4001'
 if os.getenv('ANSIBLE_ETCD_URL') is not None:
-    ANSIBLE_ETCD_URL = os.environ['ANSIBLE_ETCD_URL']
+    ANSIBLE_ETCD_URL = os.environ['ANSIBLE_ETCD_URL'].strip('/')
+
+# TODO(mm) may no longer be necessary
+def get(url):
+    t = .100
+    for i in range(5):
+        try:
+            r = urllib2.urlopen(url)
+            if r.getcode() == 200:
+                return r
+
+        except urllib2.URLError as e:
+            pass
+
+        time.sleep(t)
+        t *= 2
+
+    return None
 
 def main():
     arg_spec = dict(
@@ -28,15 +46,18 @@ def main():
 
     module = AnsibleModule(argument_spec=arg_spec, supports_check_mode=False)
 
-    baseurl = '%s/v2/keys/' % ANSIBLE_ETCD_URL
     service = module.params['service'].strip('/')
-    prefix = modules.params['prefix'].strip('/')
+    prefix = module.params['prefix'].strip('/')
+    options = '?recursive=true'
 
-    url = "%s/%s/services/%s?recursive=true" % (baseurl, prefix, service)
+    url = '/'.join((ANSIBLE_ETCD_URL, 'v2', 'keys', prefix, 'services', service)) + options
 
     nodes=dict()
 
-    r = urllib2.urlopen(url)
+    r = get(url)
+    if r is None:
+        raise ValueError('could not reach dns service')
+
     data = r.read()
     x = json.loads(data)
 
@@ -44,13 +65,19 @@ def main():
 
     for node in x['node'].get('nodes', []):
         val = json.loads(node['value'])
+
         name = val['target']
         if not name:
             continue
+
         if dot.search(name):
             continue
-        url = "%s/%s/nodes/%s" % (baseurl, prefix, name)
-        r = urllib2.urlopen(url)
+
+        url = '/'.join((ANSIBLE_ETCD_URL, 'v2', 'keys', prefix, 'nodes', name))
+        r = get(url)
+        if r is None:
+            continue
+
         data = r.read()
         y = json.loads(data)
         val = json.loads(y['node']['value'])
