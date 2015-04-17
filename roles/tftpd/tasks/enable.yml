@@ -19,5 +19,4 @@
   - systemd-reload
   - tftpd-announce-restart
 
-- service: name=tftpd.service state=started enabled=yes
-
+- service: name=tftpd-announce.service state=started enabled=yes
