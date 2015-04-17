@@ -1,10 +1,12 @@
 ---
 - template: src=enfield.service.j2 dest=/etc/systemd/system/enfield.service owner=root mode=0644
-  notify: systemd-reload
-  notify: enfield-restart
+  notify:
+  - systemd-reload
+  - enfield-restart
 
 - template: src=enfield-announce.service.j2 dest=/etc/systemd/system/enfield-announce.service owner=root mode=0644
-  notify: systemd-reload
-  notify: enfield-announce-restart
+  notify:
+  - systemd-reload
+  - enfield-announce-restart
 
 - file: path=/var/lib/images/0.1.0 state=directory mode=755

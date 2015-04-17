@@ -6,5 +6,6 @@
     - templates
 
 - copy: dest=/etc/systemd/system/confd.service src=confd.service owner=root mode=0644
-  notify: systemd-reload
-  notify: confd-restart
+  notify:
+  - systemd-reload
+  - confd-restart

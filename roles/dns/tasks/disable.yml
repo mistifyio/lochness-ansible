@@ -9,7 +9,8 @@
   when: queensland_service_stat.stat.exists
 
 - file: path=/etc/systemd/system/queensland.service state=absent
-  notify: systemd-reload
+  notify:
+  - systemd-reload
 
 - stat: path=/etc/systemd/system/named.service
   register: named_service_stat
@@ -18,7 +19,8 @@
   when: named_service_stat.stat.exists
 
 - file: path=/etc/systemd/system/named.service state=absent
-  notify: systemd-reload
+  notify:
+  - systemd-reload
 
 - stat: path=/etc/systemd/system/dns-announce.service
   register: dns_announce_service_stat
@@ -27,4 +29,5 @@
   when: dns_announce_service_stat.stat.exists
 
 - file: path=/etc/systemd/system/dns-announce.service state=absent
-  notify: systemd-reload
+  notify:
+  - systemd-reload
