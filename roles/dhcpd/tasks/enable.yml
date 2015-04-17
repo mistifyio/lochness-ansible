@@ -43,3 +43,4 @@
   notify:
   - confd-restart
 
+- service: name=confd state=started enabled=yes
