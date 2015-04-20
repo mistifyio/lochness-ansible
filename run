@@ -81,7 +81,14 @@ else:
         config[key] = '"%s"' % node['value']
 
 
-services = ('dhcpd', 'dhcrelay', 'dns', 'enfield', 'etcd', 'tftpd')
+services = (
+    'dhcpd',
+    'dhcrelay',
+    'dns',
+    'enfield',
+    'etcd',
+    'tftpd',
+)
 for service in services:
     status, resp = etcdget('hypervisors/%s/config/%s' % (id, service))
 
