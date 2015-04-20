@@ -1,0 +1,7 @@
+---
+
+- name: beanstalkd-restart
+  action: service name=beanstalkd state=restarted
+
+- name: beanstalkd-announce-restart
+  action: service name=beanstalkd-announce state=restarted

@@ -82,6 +82,7 @@ else:
 
 
 services = (
+    'beanstalkd',
     'dhcpd',
     'dhcrelay',
     'dns',

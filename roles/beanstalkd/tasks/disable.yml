@@ -1,0 +1,14 @@
+---
+
+- stat: path=/etc/systemd/system/beanstalkd.service
+  register: beanstalkd_service_stat
+
+- service: name=beanstalkd state=stopped enabled=no
+  when: beanstalkd_service_stat.stat.exists
+
+- service: name=beanstalkd-announce state=stopped enabled=no
+  when: beanstalkd_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/beanstalkd.service state=absent
+  notify:
+  - systemd-reload
