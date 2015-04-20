@@ -18,3 +18,4 @@
     - {role: waheela, tags: waheela}
     - {role: beanstalkd, tags: beanstalkd}
     - {role: dover, tags: dover}
+    - {role: loveland, tags: loveland}

@@ -89,6 +89,7 @@ services = (
     'dover',
     'enfield',
     'etcd',
+    'loveland',
     'tftpd',
 )
 for service in services:
