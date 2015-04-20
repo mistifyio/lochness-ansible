@@ -1,0 +1,4 @@
+---
+
+- name: dover-restart
+  action: service name=dover.service state=restarted
