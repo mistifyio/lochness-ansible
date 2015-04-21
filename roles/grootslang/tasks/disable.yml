@@ -1,0 +1,10 @@
+---
+- stat: path=/etc/systemd/system/grootslang.service
+  register: grootslang_service_stat
+
+- service: name=grootslang state=stopped enabled=no
+  when: grootslang_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/grootslang.service state=absent
+  notify:
+  - systemd-reload

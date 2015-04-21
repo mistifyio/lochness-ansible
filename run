@@ -89,6 +89,7 @@ services = (
     'dover',
     'enfield',
     'etcd',
+    'grootslang',
     'loveland',
     'tftpd',
 )
