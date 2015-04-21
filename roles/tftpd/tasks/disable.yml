@@ -16,10 +16,12 @@
   when: tftpd_service_stat.stat.exists
 
 - file: path=/etc/systemd/system/tftpd.socket state=absent
-  notify: systemd-reload
+  notify:
+  - systemd-reload
 
 - file: path=/etc/systemd/system/tftpd.service state=absent
-  notify: systemd-reload
+  notify:
+  - systemd-reload
 
 - stat: path=/etc/systemd/system/tftpd-announce.service
   register: tftpd_announce_service_stat
@@ -28,4 +30,5 @@
   when: tftpd_announce_service_stat.stat.exists
 
 - file: path=/etc/systemd/system/tftpd-announce.service state=absent
-  notify: systemd-reload
+  notify:
+  - systemd-reload

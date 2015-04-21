@@ -1,0 +1,14 @@
+---
+- copy: src=beanstalkd.service dest=/etc/systemd/system/beanstalkd.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - beanstalkd-restart
+
+- service: name=beanstalkd state=started enabled=yes
+
+- template: src=beanstalkd-announce.service.j2 dest=/etc/systemd/system/beanstalkd-announce.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - beanstalkd-announce-restart
+
+- service: name=beanstalkd-announce state=started enabled=yes

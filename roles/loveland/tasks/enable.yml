@@ -1,0 +1,7 @@
+---
+- copy: src=loveland.service dest=/etc/systemd/system/loveland.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - loveland-restart
+
+- service: name=loveland state=started enabled=yes

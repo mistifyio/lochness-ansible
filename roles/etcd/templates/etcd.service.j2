@@ -5,9 +5,7 @@ After=network.target
 
 [Service]
 EnvironmentFile=-/tmp/mistify-config
-EnvironmentFile=-/etc/default/etcd
-{%if not etcd_enable %}Environment=ETCD_PROXY=on
-{% endif %}
+EnvironmentFile=-/etc/sysconfig/etcd
 ExecStart=/usr/sbin/etcd -data-dir {{ etcd_data_dir }}
 StandardOutput=journal
 StandardError=journal

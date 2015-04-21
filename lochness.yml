@@ -16,3 +16,6 @@
     - {role: kappa, tags: kappa}
     - {role: grootslang, tags: grootslang}
     - {role: waheela, tags: waheela}
+    - {role: beanstalkd, tags: beanstalkd}
+    - {role: dover, tags: dover}
+    - {role: loveland, tags: loveland}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Announce waheela
+BindsTo=waheela.service
+After=waheela.service
+Wants=etcd.service
+
+[Service]
+ExecStart=/usr/sbin/queensland announce waheela --name={{machine_id}} --port=18000
+User=nobody
+RestartSec=30s
+Restart=always

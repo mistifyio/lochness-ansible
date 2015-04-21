@@ -1,0 +1,7 @@
+---
+
+- include: enable.yml
+  when: beanstalkd_enable
+
+- include: disable.yml
+  when: not beanstalkd_enable
