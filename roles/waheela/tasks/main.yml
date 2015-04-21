@@ -1,8 +1,7 @@
 ---
 
-- copy: src=waheela.service dest=/etc/systemd/system/waheela.service owner=root mode=0644
-  notify:
-    - systemd-reload
-    - waheela-restart
+- include: enable.yml
+  when: waheela_enable
 
-- service: name=waheela state=started enabled=yes
+- include: disable.yml
+  when: not waheela_enable
