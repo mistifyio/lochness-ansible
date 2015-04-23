@@ -1,0 +1,12 @@
+[Unit]
+Description=dhcpd config generator
+Wants=network.target etcd.service
+After=network.target etcd.service
+
+[Service]
+ExecStart=/usr/sbin/dobharchu --domain={{lochness_domain}}
+RestartSec=30s
+Restart=always
+
+[Install]
+WantedBy=default.target
