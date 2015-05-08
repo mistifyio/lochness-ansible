@@ -3,15 +3,15 @@
 - queensland: service=dns
   register: dhcpd_nameservers
 
-- file: path=/etc/dhcpd state=directory owner=root mode=0755
+- file: path=/etc/dhcp state=directory owner=root mode=0755
 
-- template: src=dhcpd.conf.j2 dest=/etc/dhcpd/dhcpd.conf owner=root mode=0644
+- template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf owner=root mode=0644
   notify:
   - dhcpd-restart
 
-- file: path=/etc/dhcpd/hypervisors.conf state=touch
+- file: path=/etc/dhcp/hypervisors.conf state=touch
 
-- file: path=/etc/dhcpd/guests.conf state=touch
+- file: path=/etc/dhcp/guests.conf state=touch
 
 - template: src=dhcpd.service.j2 dest=/etc/systemd/system/dhcpd.service owner=root mode=0644
   notify:
