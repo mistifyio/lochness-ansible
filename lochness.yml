@@ -18,3 +18,4 @@
     - {role: beanstalkd, tags: beanstalkd}
     - {role: dover, tags: dover}
     - {role: loveland, tags: loveland}
+    - {role: image, tags: image}

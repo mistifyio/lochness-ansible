@@ -93,6 +93,7 @@ services = (
     'loveland',
     'tftpd',
     'waheela',
+    'image',
 )
 for service in services:
     status, resp = etcdget('hypervisors/%s/config/%s' % (id, service))

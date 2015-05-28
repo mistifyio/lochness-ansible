@@ -1,0 +1,20 @@
+---
+- stat: path=/etc/systemd/system/mistify-image-service.service
+  register: image_service_stat
+
+- service: name=mistify-image-service state=stopped enabled=no
+  when: image_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/mistify-image-service.service state=absent
+  notify:
+  - systemd-reload
+
+- stat: path=/etc/systemd/system/mistify-image-service-announce.service
+  register: image_service_stat
+
+- service: name=mistify-image-service-announce state=stopped enabled=no
+  when: image_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/mistify-image-service-announce.service state=absent
+  notify:
+  - systemd-reload
