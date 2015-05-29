@@ -1,0 +1,7 @@
+---
+
+- name: mistify-image-service-restart
+  action: service name=mistify-image-service.service state=restarted
+
+- name: mistify-image-service-announce-restart
+  action: service name=mistify-image-service-announce.service state=restarted

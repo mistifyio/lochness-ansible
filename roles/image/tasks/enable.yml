@@ -1,0 +1,14 @@
+---
+- copy: src=mistify-image-service.service dest=/etc/systemd/system/mistify-image-service.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - mistify-image-service-restart
+
+- service: name=mistify-image-service state=started enabled=yes
+
+- template: src=mistify-image-service-announce.service.j2 dest=/etc/systemd/system/mistify-image-service-announce.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - mistify-image-service-announce-restart
+
+- service: name=mistify-image-service-announce state=started enabled=yes

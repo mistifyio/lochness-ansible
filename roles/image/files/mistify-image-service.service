@@ -1,0 +1,14 @@
+[Unit]
+Description=Mistify Image Service
+Wants=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/mistify-image-service -c /etc/mistify-image-service/config.json
+StandardOutput=journal
+StandardError=journal
+RestartSec=20s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

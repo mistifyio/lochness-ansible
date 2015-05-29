@@ -90,6 +90,7 @@ services = (
     'enfield',
     'etcd',
     'grootslang',
+    'image',
     'loveland',
     'tftpd',
     'waheela',
