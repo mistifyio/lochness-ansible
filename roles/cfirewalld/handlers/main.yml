@@ -1,0 +1,4 @@
+---
+
+- name: cfirewalld-restart
+  action: service name=cfirewalld.service state=restarted
