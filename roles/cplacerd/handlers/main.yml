@@ -1,0 +1,4 @@
+---
+
+- name: cplacerd-restart
+  action: service name=cplacerd.service state=restarted

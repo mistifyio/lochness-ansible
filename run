@@ -91,7 +91,7 @@ services = (
     'etcd',
     'chypervisord',
     'image',
-    'loveland',
+    'cplacerd',
     'tftpd',
     'cguestd',
 )

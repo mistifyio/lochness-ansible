@@ -1,4 +1,0 @@
----
-
-- name: loveland-restart
-  action: service name=loveland.service state=restarted

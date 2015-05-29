@@ -17,5 +17,5 @@
     - {role: cguestd, tags: cguestd}
     - {role: beanstalkd, tags: beanstalkd}
     - {role: cworkerd, tags: cworkerd}
-    - {role: loveland, tags: loveland}
+    - {role: cplacerd, tags: cplacerd}
     - {role: image, tags: image}
