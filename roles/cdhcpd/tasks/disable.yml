@@ -1,0 +1,10 @@
+---
+- stat: path=/etc/systemd/system/cdhcpd.service
+  register: cdhcpd_service_stat
+
+- service: name=cdhcpd state=stopped enabled=no
+  when: cdhcpd_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/cdhcpd.service state=absent
+  notify:
+  - systemd-reload

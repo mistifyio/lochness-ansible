@@ -1,4 +1,0 @@
----
-
-- name: dobharchu-restart
-  action: service name=dobharchu state=restarted

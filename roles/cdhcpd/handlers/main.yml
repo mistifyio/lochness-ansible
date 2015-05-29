@@ -1,0 +1,4 @@
+---
+
+- name: cdhcpd-restart
+  action: service name=cdhcpd state=restarted
