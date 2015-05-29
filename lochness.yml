@@ -16,6 +16,6 @@
     - {role: grootslang, tags: grootslang}
     - {role: waheela, tags: waheela}
     - {role: beanstalkd, tags: beanstalkd}
-    - {role: dover, tags: dover}
+    - {role: cworkerd, tags: cworkerd}
     - {role: loveland, tags: loveland}
     - {role: image, tags: image}

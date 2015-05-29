@@ -1,0 +1,4 @@
+---
+
+- name: cworkerd-restart
+  action: service name=cworkerd.service state=restarted

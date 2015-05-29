@@ -86,7 +86,7 @@ services = (
     'dhcpd',
     'dhcrelay',
     'dns',
-    'dover',
+    'cworkerd',
     'enfield',
     'etcd',
     'grootslang',
