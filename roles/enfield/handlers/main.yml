@@ -1,8 +1,0 @@
----
-
-- name: enfield-restart
-  action: service name=enfield state=restarted
-
-- name: enfield-announce-restart
-  action: service name=enfield-announce state=restarted
-  

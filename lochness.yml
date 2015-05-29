@@ -11,7 +11,7 @@
     - {role: tftpd, tags: tftpd}
     - {role: dhcpd, tags: dhcpd}
     - {role: dhcrelay, tags: dhcrelay}
-    - {role: enfield, tags: enfield}
+    - {role: cbootstrapd, tags: cbootstrapd}
     - {role: nconfigd, tags: nconfigd}
     - {role: chypervisord, tags: chypervisord}
     - {role: cguestd, tags: cguestd}

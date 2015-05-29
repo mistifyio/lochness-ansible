@@ -87,7 +87,7 @@ services = (
     'dhcrelay',
     'dns',
     'cworkerd',
-    'enfield',
+    'cbootstrapd',
     'etcd',
     'chypervisord',
     'image',
