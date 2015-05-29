@@ -89,7 +89,7 @@ services = (
     'cworkerd',
     'enfield',
     'etcd',
-    'grootslang',
+    'chypervisord',
     'image',
     'loveland',
     'tftpd',

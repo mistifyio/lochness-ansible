@@ -13,7 +13,7 @@
     - {role: dhcrelay, tags: dhcrelay}
     - {role: enfield, tags: enfield}
     - {role: kappa, tags: kappa}
-    - {role: grootslang, tags: grootslang}
+    - {role: chypervisord, tags: chypervisord}
     - {role: waheela, tags: waheela}
     - {role: beanstalkd, tags: beanstalkd}
     - {role: cworkerd, tags: cworkerd}

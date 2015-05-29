@@ -1,0 +1,10 @@
+---
+- stat: path=/etc/systemd/system/chypervisord.service
+  register: chypervisord_service_stat
+
+- service: name=chypervisord state=stopped enabled=no
+  when: chypervisord_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/chypervisord.service state=absent
+  notify:
+  - systemd-reload

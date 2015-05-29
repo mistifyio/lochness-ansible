@@ -1,0 +1,7 @@
+---
+
+- name: chypervisord-restart
+  action: service name=chypervisord.service state=restarted
+
+- name: chypervisord-announce-restart
+  action: service name=chypervisord-announce.service state=restarted

@@ -4,7 +4,7 @@ Wants=network.target etcd.service
 After=network.target etcd.service
 
 [Service]
-ExecStart=/usr/sbin/grootslang
+ExecStart=/usr/sbin/chypervisord
 StandardOutput=journal
 StandardError=journal
 RestartSec=20s
