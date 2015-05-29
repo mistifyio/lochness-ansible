@@ -14,7 +14,7 @@
     - {role: enfield, tags: enfield}
     - {role: nconfigd, tags: nconfigd}
     - {role: chypervisord, tags: chypervisord}
-    - {role: waheela, tags: waheela}
+    - {role: cguestd, tags: cguestd}
     - {role: beanstalkd, tags: beanstalkd}
     - {role: cworkerd, tags: cworkerd}
     - {role: loveland, tags: loveland}

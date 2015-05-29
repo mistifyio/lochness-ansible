@@ -4,7 +4,7 @@ Wants=network.target etcd.service
 After=network.target etcd.service
 
 [Service]
-ExecStart=/usr/sbin/waheela
+ExecStart=/usr/sbin/cguestd
 StandardOutput=journal
 StandardError=journal
 RestartSec=20s
