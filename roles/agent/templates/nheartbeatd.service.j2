@@ -6,7 +6,7 @@ After=network.target mistify-agent.service
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/heartbeat -d {{machine_id}}
+ExecStart=/usr/sbin/nheartbeatd -d {{machine_id}}
 StandardOutput=journal
 StandardError=journal
 RestartSec=60s
