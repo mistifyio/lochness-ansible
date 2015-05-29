@@ -1,4 +1,0 @@
----
-
-- name: kappa-restart
-  action: command systemctl restart kappa.service

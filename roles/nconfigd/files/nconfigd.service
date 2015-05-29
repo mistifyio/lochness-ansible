@@ -1,10 +1,10 @@
 [Unit]
-Description=Kappa Etcd Ansible Trigger
+Description=Etcd Ansible Trigger
 Wants=network.target etcd.service
 After=network.target etcd.service
 
 [Service]
-ExecStart=/usr/sbin/kappa -c /etc/kappa/config.json
+ExecStart=/usr/sbin/nconfigd -c /etc/nconfigd/config.json
 StandardOutput=journal
 StandardError=journal
 RestartSec=20s

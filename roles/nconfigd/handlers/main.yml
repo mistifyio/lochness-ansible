@@ -1,0 +1,4 @@
+---
+
+- name: nconfigd-restart
+  action: command systemctl restart nconfigd.service

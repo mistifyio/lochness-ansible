@@ -12,7 +12,7 @@
     - {role: dhcpd, tags: dhcpd}
     - {role: dhcrelay, tags: dhcrelay}
     - {role: enfield, tags: enfield}
-    - {role: kappa, tags: kappa}
+    - {role: nconfigd, tags: nconfigd}
     - {role: chypervisord, tags: chypervisord}
     - {role: waheela, tags: waheela}
     - {role: beanstalkd, tags: beanstalkd}
