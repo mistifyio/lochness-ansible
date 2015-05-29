@@ -83,17 +83,17 @@ else:
 
 services = (
     'beanstalkd',
+    'cbootstrapd',
+    'cguestd',
+    'chypervisord',
+    'cplacerd',
+    'cworkerd',
     'dhcpd',
     'dhcrelay',
     'dns',
-    'cworkerd',
-    'cbootstrapd',
     'etcd',
-    'chypervisord',
     'image',
-    'cplacerd',
     'tftpd',
-    'cguestd',
 )
 for service in services:
     status, resp = etcdget('hypervisors/%s/config/%s' % (id, service))
