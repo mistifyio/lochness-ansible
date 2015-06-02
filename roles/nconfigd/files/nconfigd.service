@@ -1,0 +1,14 @@
+[Unit]
+Description=Etcd Ansible Trigger
+Wants=network.target etcd.service
+After=network.target etcd.service
+
+[Service]
+ExecStart=/usr/sbin/nconfigd -c /etc/nconfigd/config.json
+StandardOutput=journal
+StandardError=journal
+RestartSec=20s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

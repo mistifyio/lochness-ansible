@@ -1,0 +1,10 @@
+---
+- stat: path=/etc/systemd/system/cworkerd.service
+  register: cworkerd_service_stat
+
+- service: name=cworkerd state=stopped enabled=no
+  when: cworkerd_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/cworkerd.service state=absent
+  notify:
+  - systemd-reload

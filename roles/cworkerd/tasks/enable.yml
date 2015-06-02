@@ -1,0 +1,7 @@
+---
+- copy: src=cworkerd.service dest=/etc/systemd/system/cworkerd.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - cworkerd-restart
+
+- service: name=cworkerd state=started enabled=yes

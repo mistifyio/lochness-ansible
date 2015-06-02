@@ -31,9 +31,9 @@
 
 - service: name=mistify-agent state=started enabled=yes
 
-- template: src=heartbeat.service.j2 dest=/etc/systemd/system/heartbeat.service owner=root mode=0644
+- template: src=nheartbeatd.service.j2 dest=/etc/systemd/system/nheartbeatd.service owner=root mode=0644
   notify:
   - systemd-reload
-  - heartbeat-restart
+  - nheartbeatd-restart
 
-- service: name=heartbeat state=started enabled=yes
+- service: name=nheartbeatd state=started enabled=yes

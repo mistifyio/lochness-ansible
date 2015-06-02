@@ -1,0 +1,14 @@
+---
+- copy: src=chypervisord.service dest=/etc/systemd/system/chypervisord.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - chypervisord-restart
+
+- service: name=chypervisord state=started enabled=yes
+
+- template: src=chypervisord-announce.service.j2 dest=/etc/systemd/system/chypervisord-announce.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - chypervisord-announce-restart
+
+- service: name=chypervisord-announce state=started enabled=yes

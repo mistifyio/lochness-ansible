@@ -1,0 +1,8 @@
+---
+
+- name: cbootstrapd-restart
+  action: service name=cbootstrapd state=restarted
+
+- name: cbootstrapd-announce-restart
+  action: service name=cbootstrapd-announce state=restarted
+  

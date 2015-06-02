@@ -1,7 +1,0 @@
----
-
-- name: grootslang-restart
-  action: service name=grootslang.service state=restarted
-
-- name: grootslang-announce-restart
-  action: service name=grootslang-announce.service state=restarted

@@ -1,0 +1,10 @@
+---
+- stat: path=/etc/systemd/system/cguestd.service
+  register: cguestd_service_stat
+
+- service: name=cguestd state=stopped enabled=no
+  when: cguestd_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/cguestd.service state=absent
+  notify:
+  - systemd-reload

@@ -1,0 +1,12 @@
+[Unit]
+Description=Announce cbootstrapd
+BindsTo=cbootstrapd.service
+After=cbootstrapd.service
+Wants=etcd.service
+
+[Service]
+ExecStart=/usr/sbin/queensland announce ipxe --name={{machine_id}} --port=8888
+User=nobody
+RestartSec=30s
+Restart=always
+

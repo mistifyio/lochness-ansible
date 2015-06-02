@@ -1,7 +1,0 @@
----
-- copy: src=dover.service dest=/etc/systemd/system/dover.service owner=root mode=0644
-  notify:
-  - systemd-reload
-  - dover-restart
-
-- service: name=dover state=started enabled=yes

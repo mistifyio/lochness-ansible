@@ -1,7 +1,0 @@
----
-
-- name: waheela-restart
-  action: service name=waheela.service state=restarted
-
-- name: waheela-announce-restart
-  action: service name=waheela-announce.service state=restarted

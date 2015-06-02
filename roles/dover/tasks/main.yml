@@ -1,7 +1,0 @@
----
-
-- include: enable.yml
-  when: dover_enable
-
-- include: disable.yml
-  when: not dover_enable

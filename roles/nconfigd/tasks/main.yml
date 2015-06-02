@@ -1,0 +1,11 @@
+---
+
+- file: path=/etc/nconfigd state=directory owner=root mode=0755
+
+- template: src=config.json.j2 dest=/etc/nconfigd/config.json owner=root mode=0644
+
+- copy: src=nconfigd.service dest=/etc/systemd/system/nconfigd.service owner=root mode=0644
+  notify:
+  - systemd-reload
+
+- service: name=nconfigd state=started enabled=yes

@@ -12,5 +12,5 @@
 - name: mistify-agent-restart
   action: service name=mistify-agent.service state=restarted
 
-- name: heartbeat-restart
-  action: service name=heartbeat.service state=restarted
+- name: nheartbeatd-restart
+  action: service name=nheartbeatd.service state=restarted

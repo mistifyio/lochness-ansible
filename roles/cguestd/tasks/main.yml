@@ -1,0 +1,7 @@
+---
+
+- include: enable.yml
+  when: cguestd_enable
+
+- include: disable.yml
+  when: not cguestd_enable

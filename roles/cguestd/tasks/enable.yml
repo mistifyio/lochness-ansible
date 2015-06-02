@@ -1,0 +1,14 @@
+---
+- copy: src=cguestd.service dest=/etc/systemd/system/cguestd.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - cguestd-restart
+
+- service: name=cguestd state=started enabled=yes
+
+- template: src=cguestd-announce.service.j2 dest=/etc/systemd/system/cguestd-announce.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - cguestd-announce-restart
+
+- service: name=cguestd-announce state=started enabled=yes

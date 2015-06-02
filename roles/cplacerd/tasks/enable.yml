@@ -1,0 +1,7 @@
+---
+- copy: src=cplacerd.service dest=/etc/systemd/system/cplacerd.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - cplacerd-restart
+
+- service: name=cplacerd state=started enabled=yes

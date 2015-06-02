@@ -1,0 +1,7 @@
+---
+
+- name: cguestd-restart
+  action: service name=cguestd.service state=restarted
+
+- name: cguestd-announce-restart
+  action: service name=cguestd-announce.service state=restarted

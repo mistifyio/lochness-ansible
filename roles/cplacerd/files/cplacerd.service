@@ -1,0 +1,11 @@
+[Unit]
+Description=Guest Placement Worker
+Wants=network.target etcd.service
+After=network.target etcd.service
+
+[Service]
+ExecStart=/usr/sbin/cplacerd
+Restart=always
+
+[Install]
+WantedBy=default.target

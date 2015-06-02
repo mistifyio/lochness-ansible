@@ -1,0 +1,11 @@
+[Unit]
+Description=Guest Action Worker
+Wants=network.target etcd.service
+After=network.target etcd.service
+
+[Service]
+ExecStart=/usr/sbin/cworkerd
+Restart=always
+
+[Install]
+WantedBy=default.target
