@@ -1,0 +1,4 @@
+---
+
+- name: nfirewalld-restart
+  action: service name=nfirewalld.service state=restarted

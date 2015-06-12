@@ -4,7 +4,7 @@ Wants=network.target etcd.service
 After=network.target etcd.service
 
 [Service]
-ExecStart=/usr/sbin/cfirewalld -i {{machine_id}}
+ExecStart=/usr/sbin/nfirewalld -i {{machine_id}}
 StandardOutput=journal
 StandardError=journal
 RestartSec=20s

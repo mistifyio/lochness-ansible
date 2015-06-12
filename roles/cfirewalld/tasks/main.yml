@@ -1,7 +1,0 @@
----
-- template: src=cfirewalld.service.j2 dest=/etc/systemd/system/cfirewalld.service owner=root mode=0644
-  notify:
-    - systemd-reload
-    - cfirewalld-restart
-
-- service: name=cfirewalld state=started enabled=yes
