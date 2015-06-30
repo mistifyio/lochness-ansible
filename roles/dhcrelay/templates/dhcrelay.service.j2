@@ -7,7 +7,6 @@ After=network.target
 EnvironmentFile=/etc/sysconfig/isc-dhcp-relay
 ExecStart=/usr/sbin/dhcrelay $OPTIONS $INTERFACES $SERVERS
 StandardOutput=null
-StandardError=journal
 Restart=always
 
 [Install]

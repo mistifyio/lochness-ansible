@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 ExecStart=/usr/sbin/named -u {{ dns_user }} -c /etc/named/named.conf -g
-StandardError=journal
 StandardInput=null
 
 [Install]

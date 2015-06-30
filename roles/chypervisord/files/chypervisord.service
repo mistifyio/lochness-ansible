@@ -5,7 +5,6 @@ After=network.target etcd.service
 
 [Service]
 ExecStart=/usr/sbin/chypervisord
-StandardError=journal
 Restart=always
 
 [Install]
