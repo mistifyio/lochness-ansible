@@ -7,5 +7,4 @@ Wants=etcd.service
 [Service]
 ExecStart=/usr/sbin/queensland announce dhcpd --name={{machine_id}} --port=67
 User=nobody
-RestartSec=10s
 Restart=always

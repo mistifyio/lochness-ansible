@@ -7,7 +7,6 @@ After=network.target mistify-agent-libvirt.service mistify-agent-image.service m
 Type=simple
 ExecStart=/opt/mistify/sbin/mistify-agent -c /etc/mistify/agent.json
 LimitNOFILE=32768
-RestartSec=60s
 Restart=always
 
 [Install]

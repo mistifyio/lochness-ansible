@@ -6,7 +6,6 @@ After=network.target docker.service
 Type=simple
 ExecStart=/opt/mistify/sbin/mistify-agent-docker
 LimitNOFILE=32768
-RestartSec=60s
 Restart=always
 
 [Install]

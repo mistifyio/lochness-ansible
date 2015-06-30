@@ -5,5 +5,4 @@ Wants=etcd.service
 [Service]
 ExecStart=/usr/sbin/queensland node --name={{machine_id}} --address={{ ansible_default_ipv4.address }}
 User=nobody
-RestartSec=30s
 Restart=always

@@ -7,7 +7,6 @@ After=network.target etcd.service
 ExecStart=/usr/sbin/cguestd
 StandardOutput=journal
 StandardError=journal
-RestartSec=20s
 Restart=always
 
 [Install]

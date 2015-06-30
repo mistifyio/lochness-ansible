@@ -7,7 +7,6 @@ After=network.target etcd.service
 ExecStart=/usr/sbin/confd
 StandardOutput=inherit
 StandardError=journal
-RestartSec=30s
 Restart=always
 
 [Install]

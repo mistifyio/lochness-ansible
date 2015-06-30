@@ -7,7 +7,6 @@ After=network.target
 ExecStart=/usr/sbin/dhcpd -4 -d -q -f -cf /etc/dhcp/dhcpd.conf
 StandardOutput=inherit
 StandardError=journal
-RestartSec=5s
 Restart=always
 
 [Install]
