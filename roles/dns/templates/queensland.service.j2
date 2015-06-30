@@ -6,7 +6,7 @@ Requires=etcd.service
 
 [Service]
 ExecStart=/usr/sbin/queensland server --domain={{lochness_domain}}.
-StandardOutput=inherit
+StandardOutput=null
 StandardError=journal
 Restart=always
 
