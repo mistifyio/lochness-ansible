@@ -7,5 +7,4 @@ Wants=etcd.service
 [Service]
 ExecStart=/usr/sbin/queensland announce cguestd --name={{machine_id}} --port=18000
 User=nobody
-RestartSec=30s
 Restart=always

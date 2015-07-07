@@ -7,10 +7,7 @@ After=network.target
 EnvironmentFile=-/tmp/mistify-config
 EnvironmentFile=-/etc/sysconfig/etcd
 ExecStart=/usr/sbin/etcd -data-dir {{ etcd_data_dir }}
-StandardOutput=journal
-StandardError=journal
 User={{ etcd_user }}
-RestartSec=5s
 Restart=always
 
 [Install]

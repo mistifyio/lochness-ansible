@@ -5,5 +5,4 @@ BindsTo=beanstalkd.service
 [Service]
 ExecStart=/usr/sbin/queensland announce beanstalkd --name={{machine_id}} --port=11300
 User=nobody
-RestartSec=30s
 Restart=always
