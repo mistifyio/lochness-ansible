@@ -20,6 +20,7 @@ def warn(msg, **kwargs):
         kvs.append('%s=%s' % (k, v))
 
     print("WARN", msg, " ".join(kvs))
+    sys.stdout.flush()
 
 
 
