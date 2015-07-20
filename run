@@ -6,6 +6,7 @@ import argparse
 import httplib
 import json
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -21,16 +22,7 @@ def warn(msg, **kwargs):
     print("WARN", msg, " ".join(kvs))
 
 
-def getID():
-    for name in ('/etc/machine_id', '/etc/machine-id', '/sys/class/dmi/id/product_uuid'):
-        if os.path.exists(name):
-            with open(name) as f:
-                id = f.readline().strip()
 
-            if id is not '':
-                return id
-
-    return ''
 
 
 def boolize(s):
@@ -46,7 +38,7 @@ def etcdget(url):
     return status, resp
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--id', default=getID())
+parser.add_argument('-i', '--id', default=platform.node())
 parser.add_argument('-t', '--tag', action="append")
 parser.add_argument('-e', '--etcd',
                     default=os.getenv('ETCD_ADDRESS', 'http://localhost:4001'),
