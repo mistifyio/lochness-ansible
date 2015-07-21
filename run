@@ -6,6 +6,7 @@ import argparse
 import httplib
 import json
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -19,18 +20,10 @@ def warn(msg, **kwargs):
         kvs.append('%s=%s' % (k, v))
 
     print("WARN", msg, " ".join(kvs))
+    sys.stdout.flush()
 
 
-def getID():
-    for name in ('/etc/machine_id', '/etc/machine-id', '/sys/class/dmi/id/product_uuid'):
-        if os.path.exists(name):
-            with open(name) as f:
-                id = f.readline().strip()
 
-            if id is not '':
-                return id
-
-    return ''
 
 
 def boolize(s):
@@ -46,11 +39,11 @@ def etcdget(url):
     return status, resp
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--id', default=getID())
+parser.add_argument('-i', '--id', default=platform.node())
 parser.add_argument('-t', '--tag', action="append")
 parser.add_argument('-e', '--etcd',
-        default=os.getenv('ETCD_ADDRESS', 'http://localhost:4001'),
-        help='address of etcd node, default:http://localhost:4001')
+                    default=os.getenv('ETCD_ADDRESS', 'http://localhost:4001'),
+                    help='address of etcd node, default:http://localhost:4001')
 parsedArgs = parser.parse_args()
 
 id = parsedArgs.id
@@ -100,7 +93,9 @@ for service in services:
 
     enable = 'false'
     if status != 200:
-        warn('failed to get service config', service=service, error=resp['message'])
+        warn('failed to get service config',
+             service=service,
+             error=resp['message'])
     else:
         enabled = boolize(resp['node']['value'])
         if enabled is True:

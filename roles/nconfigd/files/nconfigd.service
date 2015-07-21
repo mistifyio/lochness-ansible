@@ -4,6 +4,7 @@ Wants=network.target etcd.service
 After=network.target etcd.service
 
 [Service]
+EnvironmentFile=-/tmp/mistify-config
 ExecStart=/usr/sbin/nconfigd -c /etc/nconfigd/config.json
 Restart=always
 
