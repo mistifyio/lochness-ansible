@@ -1,6 +1,7 @@
 [Unit]
 Description=Mistify OVS Sub-agent
 After=network.target openvswitch.service
+Requires=openvswitch.service
 
 [Service]
 ExecStart=/opt/mistify/sbin/mistify-agent-ovs
