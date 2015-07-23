@@ -1,7 +1,7 @@
 [Unit]
 Description=Mistify Core Agent
-Wants=mistify-agent-libvirt.service mistify-agent-image.service mistify-agent-docker.service
-After=network.target mistify-agent-libvirt.service mistify-agent-image.service mistify-agent-docker.service
+Wants=mistify-agent-libvirt.service mistify-agent-image.service mistify-agent-docker.service mistify-agent-ovs.service
+After=network.target mistify-agent-libvirt.service mistify-agent-image.service mistify-agent-docker.service mistify-agent-ovs.service
 
 [Service]
 ExecStart=/opt/mistify/sbin/mistify-agent -c /etc/mistify/agent.json
