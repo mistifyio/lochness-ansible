@@ -116,9 +116,8 @@ if tags:
     args.extend(['--tags', ','.join(tags)])
 
 ret = subprocess.call(args)
-if ret == 0:
-    shutil.rmtree(adir)
-else:
+if ret != 0:
     warn("ansible-playbook returned an error", exit_status=ret)
 
+shutil.rmtree(adir)
 exit(ret)
