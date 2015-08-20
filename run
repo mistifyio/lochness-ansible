@@ -23,9 +23,6 @@ def warn(msg, **kwargs):
     sys.stdout.flush()
 
 
-
-
-
 def boolize(s):
     return s.lower() in ('1', 'true', 'yes', 'enabled', 'enable', 'doit')
 
@@ -114,12 +111,13 @@ args = ['ansible-playbook',
         '--inventory', adir + '/hosts',
         '--connection=local',
         './lochness.yml']
+
 if tags:
     args.extend(['--tags', ','.join(tags)])
+
 ret = subprocess.call(args)
-if ret == 0:
-    shutil.rmtree(adir)
-else:
+if ret != 0:
     warn("ansible-playbook returned an error", exit_status=ret)
 
+shutil.rmtree(adir)
 exit(ret)
