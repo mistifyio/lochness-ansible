@@ -16,6 +16,7 @@
     - {role: chypervisord, tags: chypervisord}
     - {role: cguestd, tags: cguestd}
     - {role: beanstalkd, tags: beanstalkd}
+    - {role: cnetworkd, tags: cnetworkd}
     - {role: cworkerd, tags: cworkerd}
     - {role: cplacerd, tags: cplacerd}
     - {role: image, tags: image}

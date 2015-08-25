@@ -1,0 +1,7 @@
+---
+
+- include: enable.yml
+  when: cnetworkd_enable
+
+- include: disable.yml
+  when: not cnetworkd_enable

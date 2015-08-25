@@ -1,0 +1,10 @@
+---
+- stat: path=/etc/systemd/system/cnetworkd.service
+  register: cnetworkd_service_stat
+
+- service: name=cnetworkd state=stopped enabled=no
+  when: cnetworkd_service_stat.stat.exists
+
+- file: path=/etc/systemd/system/cnetworkd.service state=absent
+  notify:
+  - systemd-reload

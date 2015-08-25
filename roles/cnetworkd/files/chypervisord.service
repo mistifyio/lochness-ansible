@@ -1,0 +1,11 @@
+[Unit]
+Description=Lochness Network Management
+Wants=network.target etcd.service
+After=network.target etcd.service
+
+[Service]
+ExecStart=/usr/sbin/cnetworkd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

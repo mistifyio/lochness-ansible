@@ -79,6 +79,7 @@ services = (
     'cbootstrapd',
     'cguestd',
     'chypervisord',
+    'cnetworkd',
     'cplacerd',
     'cworkerd',
     'dhcpd',
