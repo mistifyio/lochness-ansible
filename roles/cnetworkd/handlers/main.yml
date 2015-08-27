@@ -1,0 +1,7 @@
+---
+
+- name: cnetworkd-restart
+  action: service name=cnetworkd.service state=restarted
+
+- name: cnetworkd-announce-restart
+  action: service name=cnetworkd-announce.service state=restarted

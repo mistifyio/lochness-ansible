@@ -1,0 +1,14 @@
+---
+- copy: src=cnetworkd.service dest=/etc/systemd/system/cnetworkd.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - cnetworkd-restart
+
+- service: name=cnetworkd state=started enabled=yes
+
+- template: src=cnetworkd-announce.service.j2 dest=/etc/systemd/system/cnetworkd-announce.service owner=root mode=0644
+  notify:
+  - systemd-reload
+  - cnetworkd-announce-restart
+
+- service: name=cnetworkd-announce state=started enabled=yes

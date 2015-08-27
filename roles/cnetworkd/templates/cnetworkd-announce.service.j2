@@ -1,0 +1,10 @@
+[Unit]
+Description=Announce cnetworkd
+BindsTo=cnetworkd.service
+After=cnetworkd.service
+Wants=etcd.service
+
+[Service]
+ExecStart=/usr/sbin/queensland announce cnetworkd --name={{machine_id}} --port=17000
+User=nobody
+Restart=always
