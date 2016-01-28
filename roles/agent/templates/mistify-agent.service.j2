@@ -4,12 +4,10 @@ Description=Mistify Core Agent
 Wants=mistify-agent-docker.service
 Wants=mistify-agent-image.service
 Wants=mistify-agent-libvirt.service
-Wants=mistify-agent-ovs.service
 
 After=mistify-agent-docker.service
 After=mistify-agent-image.service
 After=mistify-agent-libvirt.service
-After=mistify-agent-ovs.service
 After=network.target
 
 [Service]
