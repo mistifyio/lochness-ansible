@@ -9,9 +9,6 @@
 - name: mistify-agent-docker-restart
   action: service name=mistify-agent-docker.service state=restarted
 
-- name: mistify-agent-ovs-restart
-  action: service name=mistify-agent-ovs.service state=restarted
-
 - name: mistify-agent-restart
   action: service name=mistify-agent.service state=restarted
 
